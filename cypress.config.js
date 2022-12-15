@@ -5,6 +5,7 @@ const createEsBuildPlugin = require("@badeball/cypress-cucumber-preprocessor/esb
 const allureWriter = require('@shelex/cypress-allure-plugin/writer');
 
 module.exports = defineConfig({
+  // videoCompression: 15,
   e2e: {
     async setupNodeEvents(on, config) {
       allureWriter(on, config);
