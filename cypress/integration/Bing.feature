@@ -1,4 +1,5 @@
 Feature: Bing
+  @bing
   Scenario: Search MINH in Bing
     Given go to Bing
     When search minh
