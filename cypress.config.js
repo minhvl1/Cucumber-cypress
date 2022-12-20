@@ -19,5 +19,6 @@ module.exports = defineConfig({
     },
     specPattern:"cypress/integration/**/*.feature"
   },
+  defaultCommandTimeout:10000
 
 });
