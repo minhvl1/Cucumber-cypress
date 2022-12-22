@@ -17,5 +17,5 @@ Feature: Demo QA
     Examples:
       |firstName  |lastName|gender |userNumber|yearOfBirth|monthOfBirth|dayOfBirth|state|city|
       |minh     |vu        |male   |1231231   |1997       |November    |21        |NCR  |Noida|
-      |phuong   |anh       |female |1231231   |1998       |January     |21        |NCR  |Delhi|
+      |phuong   |anh       |female |456789  |1998       |January     |21        |NCR  |Delhi|
       |quang    |huy       |other  |1231231   |2000       |November    |01        |NCR  |Delhi|

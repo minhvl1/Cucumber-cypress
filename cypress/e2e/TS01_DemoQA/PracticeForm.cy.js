@@ -1,4 +1,9 @@
 import {Given, When, Then} from "@badeball/cypress-cucumber-preprocessor";
+import HomePageQa from "../../support/action/demoQa/HomePageQa";
+import PracticeForm from "../../support/action/demoQa/PracticeForm";
+
+const homePageQa = new HomePageQa()
+const practiceForm = new PracticeForm()
         Cypress.on('uncaught:exception', (err, runnable) => {
                 return false;
         });
@@ -9,51 +14,39 @@ import {Given, When, Then} from "@badeball/cypress-cucumber-preprocessor";
         });
 
         Given(/^Open Practice from$/, function () {
-                cy.xpath("//div[@class='card mt-4 top-card'][2]").click()
-                cy.xpath("//div[@class='element-list collapse show']").click()
+                homePageQa.goToPracticePage()
+                practiceForm.getPracticeForm()
         });
 
         When(/^Input firstname (.*)$/, function (firstName) {
-                cy.xpath("//input[@id='firstName']").type(firstName)
+                practiceForm.inputFirstName(firstName)
         });
         When(/^Input lastname (.*)$/, function (lastName) {
-                cy.xpath("//input[@id='lastName']").type(lastName)
+               practiceForm.inputLastName(lastName)
         });
 
         When(/^Select gender (.*)$/, function (gender) {
-                switch (gender.toLowerCase()){
-                        case "male":
-                                return cy.xpath("//label[@for='gender-radio-1']").click()
-                                break
-
-                        case "female":
-                                return cy.xpath("//label[@for='gender-radio-2']").click()
-                                break
-
-                        case "other":
-                                return cy.xpath("//label[@for='gender-radio-3']").click()
-                                break
-                }
+                practiceForm.selectGender(gender)
         });
 
         When(/^Input userNumber(.*)$/, function (userNumber) {
-                cy.xpath("//input[@id='userNumber']").type(userNumber)
+                practiceForm.inputUserNumber(userNumber)
         });
         When(/^Select YOB (.*)$/, function (YOB) {
-                cy.xpath("//input[@id='dateOfBirthInput']").click()
-                cy.xpath("//select[@class='react-datepicker__year-select']").select(YOB)
+                practiceForm.clickDateOfBirthTextbox()
+                practiceForm.selectYearOfBirth(YOB)
         });
         When(/^Select MOB (.*)$/, function (MOB) {
-                cy.xpath("//select[@class='react-datepicker__month-select']").select(MOB)
+               practiceForm.selectMonthOfBirth(MOB)
         });
         When(/^Select DOB (.*)$/, function (DOB) {
-                cy.xpath("//div[@class='react-datepicker__day react-datepicker__day--0"+DOB+"']").click()
+                practiceForm.selectDayOfBirth(DOB)
         });
         When(/^Select state (.*)$/, function (state) {
-                 cy.xpath("//div[@class=' css-yk16xz-control']").type(state+'{enter}')
+                 practiceForm.selectState(state)
         });
         When(/^Select city (.*)$/, function (city) {
-                cy.xpath("(//div[@class=' css-1hwfws3'])[2]").type(city+'{enter}')
+                practiceForm.selectCity(city)
         });
         Then(/^Submit form$/, function () {
                 cy.xpath("//button[@id='submit']").click()
